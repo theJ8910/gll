@@ -185,7 +185,7 @@ class SourceFile:
         self.fout         = None
 
     def writeComment( self ):
-        self.fout.write( "/*\n%s\n-----------------------\nCopyright (c) 2015, theJ89\n\nDescription:\n    Automatically generated.\n*/\n" % self.relativePath )
+        self.fout.write( "/*\n%s\n-----------------------\nCopyright (c) 2024, theJ89\n\nDescription:\n    Automatically generated.\n*/\n" % self.relativePath )
 
     #Writes the beginning of each nested namespace block in the NAMESPACES constant
     def beginNamespaces( self ):
