@@ -1,3 +1,8 @@
+"""
+This module implements various utilities for GLL.
+"""
+from sys import stderr
+
 #Return the text content of a node as a complete string
 #This function is called recursively on child nodes of the given node
 #e.g. "<span>A, <bold>B<bold>, <italics>C</italics></span>" becomes "A, B, C"
@@ -9,7 +14,7 @@ def innerText( node ):
 
 #Print error message, exit with code 1
 def error( msg ):
-    print( msg, file=sys.stderr )
+    print( msg, file=stderr )
     exit( 1 )
 
 #Called when encountering an unrecognized tag during parsing

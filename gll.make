@@ -142,6 +142,7 @@ OBJECTS := \
 	$(OBJDIR)/mod_gl_4_3.o \
 	$(OBJDIR)/mod_gl_4_4.o \
 	$(OBJDIR)/mod_gl_4_5.o \
+	$(OBJDIR)/mod_gl_4_6.o \
 
 RESOURCES := \
 
@@ -267,6 +268,9 @@ $(OBJDIR)/mod_gl_4_4.o: src/gll/mod_gl_4_4.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/mod_gl_4_5.o: src/gll/mod_gl_4_5.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/mod_gl_4_6.o: src/gll/mod_gl_4_6.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 

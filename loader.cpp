@@ -56,6 +56,7 @@ LoadFunction load_mod_gl_4_2;
 LoadFunction load_mod_gl_4_3;
 LoadFunction load_mod_gl_4_4;
 LoadFunction load_mod_gl_4_5;
+LoadFunction load_mod_gl_4_6;
 
 
 
@@ -504,14 +505,68 @@ int load_gl_4_5_comp() {
            load_mod_gl_4_5();
 }
 
+int load_gl_4_6() {
+    return load_mod_gl_1_0()     +
+           load_mod_gl_1_1()     +
+           load_mod_gl_1_2()     +
+           load_mod_gl_1_3()     +
+           load_mod_gl_1_4()     +
+           load_mod_gl_1_5()     +
+           load_mod_gl_2_0()     +
+           load_mod_gl_2_1()     +
+           load_mod_gl_3_0()     +
+           load_mod_gl_3_1()     +
+           load_mod_gl_3_2()     +
+           load_mod_gl_3_3()     +
+           load_mod_gl_4_0()     +
+           load_mod_gl_4_1()     +
+           load_mod_gl_4_2()     +
+           load_mod_gl_4_3()     +
+           load_mod_gl_4_4()     +
+           load_mod_gl_4_5();
+           load_mod_gl_4_6();
+}
+int load_gl_4_6_comp() {
+    return load_mod_gl_1_0()     +
+           load_mod_gl_1_0_rem() +
+           load_mod_gl_1_1()     +
+           load_mod_gl_1_1_rem() +
+           load_mod_gl_1_2()     +
+           load_mod_gl_1_3()     +
+           load_mod_gl_1_3_rem() +
+           load_mod_gl_1_4()     +
+           load_mod_gl_1_4_rem() +
+           load_mod_gl_1_5()     +
+           load_mod_gl_2_0()     +
+           load_mod_gl_2_1()     +
+           load_mod_gl_3_0()     +
+           load_mod_gl_3_1()     +
+           load_mod_gl_3_2()     +
+           load_mod_gl_3_3()     +
+           load_mod_gl_4_0()     +
+           load_mod_gl_4_1()     +
+           load_mod_gl_4_2()     +
+           load_mod_gl_4_3()     +
+           load_mod_gl_4_4()     +
+           load_mod_gl_4_5();
+           load_mod_gl_4_6();
+}
+
 /*
 Load
------------
-Call to load all available bindings and extensions for the currently active context
-Returns number of failures
+----
+
+Description:
+    Call to load all available bindings and extensions for the currently active context.
+
+Arguments:
+    N/A
+
+Returns:
+    int: The number of bindings that failed to load.
 */
 int Load() {
-    return load_gl_4_4_comp();
+    return load_gl_4_6_comp();
 }
 
 }
