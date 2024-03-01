@@ -247,17 +247,59 @@ def parseCommands( node ):
     for child in node:
         if child.tag == "command":
             proto    = child.find( "proto" )
-            rvnode   = proto.find( "ptype" )
-            rv       = (rvnode.text if rvnode != None else proto.text).strip()
-            name     = proto.find( "name" ).text
+            rt, name = parseCommand_separate_return_type_and_name( proto )
             params   = [
                 innerText( paramnode ).strip()
                 for paramnode in child
                 if paramnode.tag == "param"
             ]
-            commands[ name ] = Command( rv, name, params )
+            commands[ name ] = Command( rt, name, params )
         else:
             tagError( child )
+
+def parseCommand_separate_return_type_and_name( node ):
+    #Initial text is present; this is part of the return type:
+    if ( text := node.text ) is not None:
+        rt = text
+    #No initial text.
+    else:
+        rt = ""
+    noNameYet = True
+    for child in node:
+        #Found the <name> tag:
+        if child.tag == "name":
+            #This should be the last tag in <proto>.
+            noNameYet = False
+
+            if ( text := child.text ) is not None:
+                name = text
+            else:
+                name = ""
+
+        #Found part of the return type:
+        elif noNameYet:
+            if ( text := child.text ) is not None:
+                rt += text
+            if ( text := child.tail ) is not None:
+                rt += text
+        #There shouldn't be any tags after <name>.
+        else:
+            raise RuntimeError( "Encountered a tag after <name> tag in <proto> tag in <command> tag." )
+
+    #Remove whitespace from the beginning and end of the return type.
+    rt = rt.strip()
+
+    #We still don't have a return value:
+    if rt == "":
+        raise RuntimeError( "No return value found in <proto> tag in <command> tag." ) 
+
+    #Never encountered a <name> tag:
+    if noNameYet:
+        raise RuntimeError( "Never encountered <name> tag in <proto> tag in <command> tag." )
+
+    #We found both the return type and name as expected.
+    return ( rt, name )
+        
 
 #Parse either a feature or extension
 def parseModule( node, module ):
