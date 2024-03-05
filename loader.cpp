@@ -1,7 +1,7 @@
 /*
 loader.cpp
 -----------------------
-Copyright (c) 2015, theJ89
+Copyright (c) 2024, theJ89
 
 Description:
     Loaders are defined here.

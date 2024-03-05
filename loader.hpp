@@ -1,7 +1,7 @@
 /*
 loader.hpp
 -----------------------
-Copyright (c) 2015, theJ89
+Copyright (c) 2024, theJ89
 
 Description:
     GLL's load function is declared here

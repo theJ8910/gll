@@ -25,9 +25,17 @@ GLX_FILE = f"{XML_DIR}/glx.xml"
 WGL_FILE = f"{XML_DIR}/wgl.xml"
 EGL_FILE = f"{XML_DIR}/egl.xml"
 
-#Extension to use for includes (headers) and source files, respectively
-INC_EXT = "hpp"
+#List of registry files; each entry is a tuple consisting of the URL it can be found at and the path it should be stored at locally
+REGISTRY_FILES = (
+    ( EGL_URL, EGL_FILE ),
+    ( GL_URL,  GL_FILE  ),
+    ( GLX_URL, GLX_FILE ),
+    ( WGL_URL, WGL_FILE )
+)
+
+#Extension to use for source files and includes (headers), respectively
 SRC_EXT = "cpp"
+INC_EXT = "hpp"
 
 #Name of the project; affects folder names
 PROJECT_NAME = "gll"
